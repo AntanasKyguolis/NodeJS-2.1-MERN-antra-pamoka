@@ -8,14 +8,23 @@ const getGoals = (req, res) => {
 // @route POST /api/goals
 // @access PRIVATE
 const setGoal = (req, res) => {
+    
     res.status(200).json({message: 'SET  goal'});
 }
 // @desc Update goal
 // @route PUT /api/goals/:id
 // @access PRIVATE
 const updateGoal = (req, res) => {
+
+   if(!req.body.text){
+
+        res.status(400)
+        throw new Error("Please add a text field");
+   }
+
     res.status(200).json({message: `Update goal ${req.params.id}`});
 }
+
 // @desc Delete goal
 // @route DELETE /api/goals/:id
 // @access PRIVATE
